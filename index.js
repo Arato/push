@@ -21,7 +21,6 @@ io.on('connection', function (socket) {
     });
 
     socket.on('disconnect', function () {
-        console.info('SocketIO : Received ' + nb + ' messages');
         console.info('SocketIO > Disconnected socket ' + socket.id);
     });
 });
