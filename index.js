@@ -10,16 +10,14 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function (socket) {
-    var nb = 0;
-
-    console.info('SocketIO > Connected socket ' + socket.id);
-
-    socket.on('broadcast', function (message) {
-        ++nb;
-        console.log("broadcast !");
-        console.info('ElephantIO broadcast > ' + JSON.stringify(message));
-
-        io.emit('alert.created', JSON.stringify(message));
+    socket.on('php.alert.created', function (data) {
+        io.emit('alert.created', data);
+    });
+    socket.on('php.alert.updated', function (data) {
+        io.emit('alert.updated', data);
+    });
+    socket.on('php.alert.deleted', function (data) {
+        io.emit('alert.deleted', data);
     });
 
     socket.on('disconnect', function () {
