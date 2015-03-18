@@ -10,14 +10,14 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function (socket) {
-    socket.on('php.alert.created', function (data) {
-        io.emit('alert.created', data);
+    socket.on('php.alert.created', function (response) {
+        io.emit('alert.created', response);
     });
-    socket.on('php.alert.updated', function (data) {
-        io.emit('alert.updated', data);
+    socket.on('php.alert.updated', function (response) {
+        io.emit('alert.updated', response);
     });
-    socket.on('php.alert.deleted', function (data) {
-        io.emit('alert.deleted', data);
+    socket.on('php.alert.deleted', function (response) {
+        io.emit('alert.deleted', response);
     });
 
     socket.on('disconnect', function () {
